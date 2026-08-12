@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JCQFWVL6ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JCQFWVL6ME');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wayname — Quiz de calles en Street View</title>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wayname — Street View name quiz">
+<meta property="og:description" content="Identify the street from a Street View photo. 10 questions, 4 options, new selection every game.">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wayname — Street View name quiz">
+<meta name="twitter:description" content="Identify the street from a Street View photo.">
+<meta name="twitter:image" content="og-image.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- HOME SCREEN -->
+  <section id="screen-home" class="screen active">
+    <div class="card intro-card">
+      <button id="btn-lang" class="btn-lang" aria-label="Change language">EN</button>
+      <div class="logo">🗺️</div>
+      <h1>Wayname</h1>
+      <p class="subtitle" data-i18n="subtitle"></p>
+      <p class="hint"     data-i18n="hint"></p>
+
+      <div id="challenge-banner" class="challenge-banner hidden">
+        <span id="challenge-text"></span>
+      </div>
+
+      <div class="city-list" id="city-list"></div>
+
+  <footer>Made with 🤖⛵ by Tizon</footer>
+    </div>
+  </section>
+
+  <!-- QUIZ SCREEN -->
+  <section id="screen-quiz" class="screen">
+    <header class="quiz-header">
+      <div class="progress-wrap">
+        <span id="progress-label">1 / 10</span>
+        <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      </div>
+      <div id="score-label" class="score-label">0</div>
+    </header>
+
+    <div class="question-wrap">
+      <div class="image-frame">
+        <div id="image-loading" class="image-loading"></div>
+        <img id="street-image" class="street-image hidden" alt="Street view">
+      </div>
+
+      <p class="question-prompt" data-i18n="question_prompt"></p>
+
+      <div id="options" class="options-grid"></div>
+
+      <div id="feedback" class="feedback hidden">
+        <span id="feedback-icon"></span>
+        <span id="feedback-text"></span>
+      </div>
+
+      <button id="btn-next" class="btn btn-primary hidden"></button>
+    </div>
+  </section>
+
+  <!-- RESULTS SCREEN -->
+  <section id="screen-results" class="screen">
+    <div class="card results-card">
+      <div id="results-emoji" class="results-emoji">🏆</div>
+      <h2 id="results-title"></h2>
+      <div id="final-score" class="final-score">0 / 10</div>
+      <p id="results-message" class="results-message"></p>
+
+      <div id="emoji-grid" class="emoji-grid"></div>
+
+      <div class="share-box">
+        <p class="share-label" data-i18n="share_label"></p>
+        <div class="share-btns">
+          <button id="btn-share-x"       class="btn btn-social btn-x">X</button>
+          <button id="btn-share-fb"      class="btn btn-social btn-fb">Facebook</button>
+          <button id="btn-share-wa"      class="btn btn-social btn-wa">WhatsApp</button>
+          <button id="btn-share-threads" class="btn btn-social btn-threads">Threads</button>
+        </div>
+        <div class="share-btns share-btns-secondary">
+          <button id="btn-share-image"  class="btn btn-copy" data-i18n="save_image"></button>
+          <button id="btn-share-copy"   class="btn btn-copy" data-i18n="copy_text"></button>
+          <button id="btn-share-native" class="btn btn-native hidden" data-i18n="share_native"></button>
+        </div>
+        <div id="copy-confirm" class="copy-confirm hidden"></div>
+      </div>
+
+      <div class="results-actions">
+        <button id="btn-restart" class="btn btn-secondary" data-i18n="play_again"></button>
+        <button id="btn-home"    class="btn btn-ghost"     data-i18n="change_city"></button>
+      </div>
+
+      <details class="review-details">
+        <summary data-i18n="see_answers"></summary>
+        <ol id="review-list" class="review-list"></ol>
+      </details>
+    </div>
+  </section>
+</div>
+
+<!-- Hidden canvas for Instagram score-card image -->
+<canvas id="share-canvas" width="1080" height="1920" class="hidden"></canvas>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
